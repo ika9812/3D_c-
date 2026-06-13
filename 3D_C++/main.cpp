@@ -61,6 +61,8 @@ int APIENTRY WinMain(HINSTANCE hinstance,HINSTANCE hprevinstance,LPSTR lpcmdline
 		DrawGround();
 		DrawSphere3D(VGet(00.0f, 00.0f, 2000.0f), 100, 32, GetColor(0, 192, 255), GetColor(125, 255, 222), TRUE);
 		
+		
+
 		ScreenFlip();
 		WaitTimer(33);
 
