@@ -7,7 +7,7 @@ private:
 	float jp;//プレイヤーのジャンプパワー
 	float gravity;//プレイヤーの重力
 
-
+	bool isJump = true;//ジャンプ中かどうか
 	/// <summary>
 	/// プレイヤーの座標
 	/// </summary>

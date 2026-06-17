@@ -1,4 +1,5 @@
 #pragma once
+#include"DxLib.h"
 class InputManager
 {
 private:
@@ -6,6 +7,8 @@ private:
 	char oldkey[256];
 
 public:
+	InputManager();
+
 	void Update();
 
 	bool Press(int key);
