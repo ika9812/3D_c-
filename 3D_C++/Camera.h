@@ -4,10 +4,6 @@
 class Camera
 {
 private:
-	/// <summary>
-	/// カメラ座標
-	/// </summary>
-	VECTOR cameraPos;
 
 	int CameraX, CameraY;//マウス座標
 
