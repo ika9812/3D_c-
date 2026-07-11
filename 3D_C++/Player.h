@@ -1,30 +1,36 @@
 #pragma once
 #include"DxLib.h"
+#include "InputManager.h"
+namespace PlayerTransform
+{
+	struct Pos
+	{
+		float x, y, z;
+	};
+
+	struct  rotate
+	{
+		float x, y, z;
+	};
+}
 class Player
 {
 private:
 	float sp;//プレイヤーの速度
 	float jp;//プレイヤーのジャンプパワー
 	float gravity;//プレイヤーの重力
+	float jumpVelocity;//向き
 
 	bool isJump = true;//ジャンプ中かどうか
-	/// <summary>
-	/// プレイヤーの座標
-	/// </summary>
-	struct Pos
-	{
-		float x, y, z;
-	};
+	
+	
 
-	Pos playerPos;
+	PlayerTransform::Pos playerPos;
 
-	/// <summary>
-	/// カメラ座標
-	/// </summary>
-	VECTOR cameraPos;
+	InputManager input;
 
 public:
 	Player();
-	void PlayerEntry();
+	void PlayerUpdate();
 };
 

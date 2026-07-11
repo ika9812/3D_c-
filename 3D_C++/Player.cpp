@@ -1,5 +1,5 @@
 #include "Player.h"
-#include "InputManager.h"
+
 
 Player::Player()
 {
@@ -7,45 +7,40 @@ Player::Player()
 	playerPos.y = 50.0f;
 	playerPos.z = 0;
 
-	cameraPos = VGet(
-		playerPos.x,
-		playerPos.y + 50.0f,
-		playerPos.z - 300.0f
-	);
+	jumpVelocity = 0.0f;	
 
 	sp = 5.0f;
-	jp = 50.0f;
+	jp = 25.0f;
 	gravity = 3.0f;
 
 }
-InputManager playerinput;
-void Player::PlayerEntry()
+void Player::PlayerUpdate()
 {
 	
 
-	playerinput.Update();
+	input.Update();
 
-	if (playerinput.Press(KEY_INPUT_W)) playerPos.z += sp;
-	if (playerinput.Press(KEY_INPUT_S)) playerPos.z -= sp;
-	if (playerinput.Press(KEY_INPUT_D)) playerPos.x += sp;
-	if (playerinput.Press(KEY_INPUT_A)) playerPos.x -= sp;
-	if (playerinput.Trigger(KEY_INPUT_SPACE) && isJump)
+	if (input.Press(KEY_INPUT_W)) playerPos.z += sp;
+	if (input.Press(KEY_INPUT_S)) playerPos.z -= sp;
+	if (input.Press(KEY_INPUT_D)) playerPos.x += sp;
+	if (input.Press(KEY_INPUT_A)) playerPos.x -= sp;
+	if (input.Trigger(KEY_INPUT_SPACE) && isJump)
 	{
-		playerPos.y += jp;
+		jumpVelocity = 40.0f;
 		isJump = false;
 	}
+	jumpVelocity -= gravity;
+	playerPos.y += jumpVelocity;
 
-
-	SetCameraPositionAndTarget_UpVecY(cameraPos, VGet(playerPos.x,playerPos.y,playerPos.z));
+	
 	DrawSphere3D(VGet(playerPos.x,playerPos.y,playerPos.z),50,32,GetColor(50,50,50),GetColor(30,30,30),TRUE);
 	
-	if (playerPos.y >= 50)
+	if (playerPos.y <= 50.0f)
 	{
-		playerPos.y -= gravity;
-	}
-	else
-	{
+		playerPos.y = 50.0f;
+		jumpVelocity = 0.0f;
 		isJump = true;
 	}
+	
 
 }

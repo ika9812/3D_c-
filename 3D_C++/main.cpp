@@ -6,14 +6,18 @@
 using namespace std;
 
 #include "Player.h"
+#include "Camera.h"
 
 const int WIDTH = 1920, HEIGHT = 1080;
 
 Player pl;
+Camera camera;
 
 void MainGame()
 {
-	pl.PlayerEntry();//プレイヤーの描画、操作
+	pl.PlayerUpdate();//プレイヤーの描画、操作
+	camera.CameraUpdate();
+
 }
 void DrawGround()
 {
