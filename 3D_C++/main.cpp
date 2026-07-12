@@ -16,7 +16,7 @@ Camera camera;
 void MainGame()
 {
 	pl.PlayerUpdate();//プレイヤーの描画、操作
-	camera.CameraUpdate();
+	camera.Update();
 
 }
 void DrawGround()
